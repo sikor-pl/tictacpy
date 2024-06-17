@@ -77,7 +77,7 @@ class InfiniteTicTacToe:
             "disappear_cell": self.history[self.current_player][0] if len(self.history[self.current_player]) == self.disappear_after else None,
             "winner": self.winner,
             "message": message,
-            "valid_move": message is None,  # True if no message (valid move), False otherwise
+            "valid_move": self.winner is not None or message is None ,  # True if no message (valid move), False otherwise
         }
 
 # Example usage
