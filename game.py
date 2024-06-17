@@ -70,11 +70,14 @@ class InfiniteTicTacToe:
         directions = [(1, 0), (0, 1), (1, 1), (1, -1)]
         return any(check_direction(dx, dy) for dx, dy in directions)
 
+    def next_disappear_cell(self):
+        return self.history[self.current_player][0] if len(self.history[self.current_player]) == self.disappear_after else None
+
     def get_game_state(self, message=None):
         return {
             "board": self.board,
             "current_player": self.current_player,
-            "disappear_cell": self.history[self.current_player][0] if len(self.history[self.current_player]) == self.disappear_after else None,
+            "disappear_cell": self.next_disappear_cell(),
             "winner": self.winner,
             "message": message,
             "valid_move": self.winner is not None or message is None ,
