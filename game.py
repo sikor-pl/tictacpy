@@ -77,15 +77,6 @@ class InfiniteTicTacToe:
             "disappear_cell": self.history[self.current_player][0] if len(self.history[self.current_player]) == self.disappear_after else None,
             "winner": self.winner,
             "message": message,
-            "valid_move": self.winner is not None or message is None ,  # True if no message (valid move), False otherwise
+            "valid_move": self.winner is not None or message is None ,
         }
 
-# Example usage
-# game = InfiniteTicTacToe(size=3, win_length=3, disappear_after=4)
-# game.start_game()
-# print(game.make_move(0, 0))
-# print(game.make_move(1, 1))
-# print(game.make_move(0, 1))
-# print(game.make_move(1, 0))
-# print(game.make_move(2, 1))  # This move should set (1, 1) to disappear
-# print(game.make_move(2, 2))  # This move should return an error about disappearing cell
