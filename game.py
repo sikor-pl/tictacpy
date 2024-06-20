@@ -1,4 +1,5 @@
 import json
+import numpy as np
 
 class InfiniteTicTacToe:
     def __init__(self, size=3, win_length=3, disappear_after=3):
@@ -10,6 +11,7 @@ class InfiniteTicTacToe:
         self.current_player = 'X'
         self.game_over = False
         self.winner = None
+        self.all_history = []
 
     def start_game(self):
         self.board = [[' ' for _ in range(self.size)] for _ in range(self.size)]
@@ -17,6 +19,7 @@ class InfiniteTicTacToe:
         self.current_player = 'X'
         self.game_over = False
         self.winner = None
+        self.all_history = []
 
     def make_move(self, row, col):
         if self.game_over:
@@ -42,6 +45,7 @@ class InfiniteTicTacToe:
         # Place the move
         self.board[row][col] = self.current_player
         self.history[self.current_player].append((row, col))
+        self.all_history.append((row, col))
 
         # Check for win
         if self.check_winner(row, col):
@@ -72,6 +76,7 @@ class InfiniteTicTacToe:
 
     def next_disappear_cell(self):
         return self.history[self.current_player][0] if len(self.history[self.current_player]) == self.disappear_after else None
+
 
     def get_game_state(self, message=None):
         return {
